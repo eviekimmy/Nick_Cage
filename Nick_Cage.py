@@ -12,6 +12,7 @@ main_table = soup.find_all('table')[0]
 # write the critic and audience score to Nick_Cage.csv
 with open('Nick_Cage.csv', 'w') as csvfile:
     csvwriter = csv.writer(csvfile)
+    csvwriter.writerow(['critic', 'audience'])
 
     for row in main_table.find('tbody').find_all('tr'):
         score_cols = row.find_all('td', class_='celebrity-filmography__score-content')
@@ -19,4 +20,4 @@ with open('Nick_Cage.csv', 'w') as csvfile:
         audiences = score_cols[1].find_all('span', class_='icon__tomatometer-score')
 
         for i,j in zip(critics, audiences):
-            csvwriter.writerow([i.text,j.text])
+            csvwriter.writerow([int(i.text.replace('%','')), int(j.text.replace('%',''))])
