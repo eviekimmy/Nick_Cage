@@ -7,12 +7,12 @@ audience = Nick$audience
 ############# visual analysis #############
 
 library(dplyr)
-plot(density(critic), main ='critic')
-plot(density(audience), main ='audience')
+plot(density(critic), main ='critic', xlab='critic score')
+plot(density(audience), main ='audience', xlab='audience score')
 # ^ critic and audience scores appear to follow a bimodal distribution
 
 library("car")
-plot(density(critic - audience))
+plot(density(critic - audience), main='difference', xlab='difference in score')
 qqPlot(critic - audience)
 # ^ the difference appears to follow a normal distribution
 
