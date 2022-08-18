@@ -12,6 +12,7 @@ plot(density(audience), main ='audience')
 # ^ critic and audience scores appear to follow a bimodal distribution
 
 library("car")
+plot(density(critic - audience))
 qqPlot(critic - audience)
 # ^ the difference appears to follow a normal distribution
 
